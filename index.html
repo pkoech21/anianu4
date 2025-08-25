@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anianu.com</title>
   <style>
     body {
@@ -139,12 +139,17 @@
       display: flex;
     }
 
-    input {
+    input, select {
       padding: 12px;
       margin: 8px 0;
       border: 1px solid #ccc;
       border-radius: 25px;
       font-size: 16px;
+      appearance: none;
+    }
+
+    select:invalid {
+      color: gray;
     }
 
     button {
@@ -162,6 +167,7 @@
       background: darkblue;
     }
   </style>
+
   <script>
     function toggleMenu() {
       const menu = document.querySelector('.menu');
@@ -221,7 +227,18 @@
       <input type="text" placeholder="State" required>
       <input type="text" placeholder="City" required>
       <input type="text" placeholder="Pincode (6 digits)" pattern="[0-9]{6}" required>
-      <input type="text" placeholder="Position Applying For" required>
+
+      <!-- Updated Dropdown -->
+      <select required>
+        <option value="" disabled selected>Select Position Applying For</option>
+        <option>Marketing Intern</option>
+        <option>Brand Ambassador</option>
+        <option>Social Media Promoter</option>
+        <option>Campus Ambassador</option>
+        <option>Content Creator</option>
+        <option>Other</option>
+      </select>
+
       <input type="url" placeholder="Social Media Profile (optional)">
       <input type="url" placeholder="Instagram Profile URL">
       <input type="url" placeholder="YouTube URL">
