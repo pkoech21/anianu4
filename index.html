@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Anianu.com</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f4f7fa;
-      text-align: center;
     }
 
     /* Fixed Top Bar */
@@ -54,7 +55,6 @@
       width: 180px;
       text-align: left;
     }
-
     .menu a {
       display: flex;
       align-items: center;
@@ -64,27 +64,33 @@
       font-size: 16px;
       border-bottom: 1px solid #eee;
     }
+    .menu a:last-child { border-bottom: none; }
+    .menu a:hover { background: #f0f0f0; }
+    .menu i { margin-right: 10px; color: #555; }
 
-    .menu a:last-child {
-      border-bottom: none;
+    /* Main Layout */
+    .main-wrapper {
+      margin-top: 120px; /* push below navbar */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
     }
 
-    .menu a:hover {
-      background: #f0f0f0;
+    .side-images {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .side-images img {
+      width: 120px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    .menu i {
-      margin-right: 10px;
-      color: #555;
-    }
-
-    /* Container */
     .container {
-      margin-top: 120px;
       width: 400px;
       max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
       padding: 20px;
       background: white;
       border-radius: 15px;
@@ -103,10 +109,7 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
-    .ads-btn:hover {
-      opacity: 0.85;
-    }
+    .ads-btn:hover { opacity: 0.85; }
 
     /* Tabs */
     .tabs {
@@ -114,7 +117,6 @@
       justify-content: center;
       margin-bottom: 20px;
     }
-
     .tab {
       flex: 1;
       padding: 12px;
@@ -123,22 +125,11 @@
       border-radius: 20px;
       transition: 0.3s;
     }
-
-    .tab.active {
-      background: green;
-      color: white;
-    }
+    .tab.active { background: green; color: white; }
 
     /* Forms */
-    form {
-      display: none;
-      flex-direction: column;
-    }
-
-    form.active {
-      display: flex;
-    }
-
+    form { display: none; flex-direction: column; }
+    form.active { display: flex; }
     input, select {
       padding: 12px;
       margin: 8px 0;
@@ -147,11 +138,7 @@
       font-size: 16px;
       appearance: none;
     }
-
-    select:invalid {
-      color: gray;
-    }
-
+    select:invalid { color: gray; }
     button {
       padding: 12px;
       background: blue;
@@ -162,29 +149,14 @@
       cursor: pointer;
       margin-top: 10px;
     }
+    button:hover { background: darkblue; }
 
-    button:hover {
-      background: darkblue;
+    /* Responsive */
+    @media (max-width: 768px) {
+      .side-images { display: none; }
+      .main-wrapper { justify-content: center; }
     }
   </style>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.querySelector('.menu');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    }
-
-    function showForm(type) {
-      document.getElementById("loginForm").classList.remove("active");
-      document.getElementById("registerForm").classList.remove("active");
-      document.getElementById(type + "Form").classList.add("active");
-
-      document.getElementById("loginTab").classList.remove("active");
-      document.getElementById("registerTab").classList.remove("active");
-      document.getElementById(type + "Tab").classList.add("active");
-    }
-  </script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -199,55 +171,49 @@
     </div>
   </div>
 
-  <!-- Main Container -->
-  <div class="container">
-    <div class="ads-btn">ADS</div>
-    
-    <div class="tabs">
-      <div id="loginTab" class="tab active" onclick="showForm('login')">Login</div>
-      <div id="registerTab" class="tab" onclick="showForm('register')">Register</div>
+  <!-- Main Wrapper -->
+  <div class="main-wrapper">
+
+    <!-- Left Images -->
+    <div class="side-images">
+      <img src="https://cdn.pixabay.com/photo/2023/12/08/07/27/woman-8437007_1280.jpg" alt="img1">
+      <img src="https://picsum.photos/200?random=2" alt="img2">
+      <img src="https://picsum.photos/200?random=3" alt="img3">
+      <img src="https://picsum.photos/200?random=4" alt="img4">
+      <img src="https://picsum.photos/200?random=5" alt="img5">
+      <img src="https://picsum.photos/200?random=6" alt="img6">
     </div>
 
-    <!-- Login Form -->
-    <form id="loginForm" class="active">
-      <input type="email" placeholder="Email Address" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
+    <!-- Center Form -->
+    <div class="container">
+      @yield('content')
+    </div>
 
-    <!-- Register Form -->
-    <form id="registerForm">
-      <input type="text" placeholder="Username" required>
-      <input type="text" placeholder="First Name" required>
-      <input type="text" placeholder="Last Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <input type="tel" placeholder="Phone Number (10 digits)" pattern="[0-9]{10}" required>
-      <input type="date" required>
-      <input type="text" placeholder="Gender (M/F)" required>
-      <input type="text" placeholder="State" required>
-      <input type="text" placeholder="City" required>
-      <input type="text" placeholder="Pincode (6 digits)" pattern="[0-9]{6}" required>
-
-      <!-- Updated Dropdown -->
-      <select required>
-        <option value="" disabled selected>Select Position Applying For</option>
-        <option>Marketing Intern</option>
-        <option>Brand Ambassador</option>
-        <option>Social Media Promoter</option>
-        <option>Campus Ambassador</option>
-        <option>Content Creator</option>
-        <option>Other</option>
-      </select>
-
-      <input type="url" placeholder="Social Media Profile (optional)">
-      <input type="url" placeholder="Instagram Profile URL">
-      <input type="url" placeholder="YouTube URL">
-      <input type="url" placeholder="Facebook Profile URL">
-      <input type="password" placeholder="Password" required>
-      <input type="password" placeholder="Confirm Password" required>
-      <button type="submit">Register</button>
-    </form>
+    <!-- Right Images -->
+    <div class="side-images">
+      <img src="https://picsum.photos/200?random=7" alt="img7">
+      <img src="https://picsum.photos/200?random=8" alt="img8">
+      <img src="https://picsum.photos/200?random=9" alt="img9">
+      <img src="https://picsum.photos/200?random=10" alt="img10">
+      <img src="https://picsum.photos/200?random=11" alt="img11">
+      <img src="https://picsum.photos/200?random=12" alt="img12">
+    </div>
   </div>
 
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+    function showForm(type) {
+      document.getElementById("loginForm").classList.remove("active");
+      document.getElementById("registerForm").classList.remove("active");
+      document.getElementById(type + "Form").classList.add("active");
+
+      document.getElementById("loginTab").classList.remove("active");
+      document.getElementById("registerTab").classList.remove("active");
+      document.getElementById(type + "Tab").classList.add("active");
+    }
+  </script>
 </body>
 </html>
