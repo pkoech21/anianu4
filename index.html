@@ -1,246 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anianu.com</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Company Page</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f4f7fa;
-    }
-
-    /* Fixed Top Bar */
-    .top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-      z-index: 1000;
-    }
-
-    .title {
-      font-size: 28px;
-      font-weight: bold;
-      color: red;
-      font-family: 'Trebuchet MS', sans-serif;
-    }
-
-    /* Hamburger Icon */
-    .hamburger {
-      font-size: 28px;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    /* Dropdown Menu */
-    .menu {
-      display: none;
-      position: absolute;
-      top: 55px;
-      right: 20px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      width: 180px;
-      text-align: left;
-    }
-    .menu a {
-      display: flex;
-      align-items: center;
-      padding: 12px;
-      text-decoration: none;
-      color: #333;
-      font-size: 16px;
-      border-bottom: 1px solid #eee;
-    }
-    .menu a:last-child { border-bottom: none; }
-    .menu a:hover { background: #f0f0f0; }
-    .menu i { margin-right: 10px; color: #555; }
-
-    /* Main Layout */
-    .main-wrapper {
-      margin-top: 120px; /* push below navbar */
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .side-images {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .side-images img {
-      width: 120px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    .container {
-      width: 400px;
-      max-width: 90%;
       padding: 20px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      background: #f4f4f4;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
       text-align: center;
     }
 
-    /* ADS Button */
-    .ads-btn {
-      display: inline-block;
-      padding: 12px 20px;
-      background: linear-gradient(to right, pink, darkblue);
-      color: white;
-      font-weight: bold;
-      border-radius: 30px;
-      margin-bottom: 20px;
-      cursor: pointer;
-      transition: 0.3s;
+    .card h2 {
+      margin: 0;
+      color: #333;
     }
-    .ads-btn:hover { opacity: 0.85; }
 
-    /* Tabs */
-    .tabs {
+    .card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin: 10px 0;
+      object-fit: cover;
+    }
+
+    .preview-images {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 10px 0;
     }
-    .tab {
-      flex: 1;
-      padding: 12px;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 20px;
-      transition: 0.3s;
-    }
-    .tab.active { background: green; color: white; }
 
-    /* Forms */
-    form { display: none; flex-direction: column; }
-    form.active { display: flex; }
-    input, select {
-      padding: 12px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      font-size: 16px;
-      appearance: none;
+    .preview-images img {
+      width: 70px;
+      height: 70px;
+      border-radius: 8px;
+      object-fit: cover;
     }
-    select:invalid { color: gray; }
-    button {
-      padding: 12px;
-      background: blue;
-      color: white;
-      font-weight: bold;
+
+    .card button {
+      margin: 5px;
+      padding: 8px 15px;
       border: none;
-      border-radius: 25px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .post-btn {
+      background: #28a745;
+      color: #fff;
+    }
+
+    .discard-btn {
+      background: #dc3545;
+      color: #fff;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .profile-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .profile-circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 2px dashed #aaa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fafafa;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+
+    .profile-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .upload-btn {
+      background: #007bff;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .create-btn {
+      background: #17a2b8;
+      color: #fff;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
       margin-top: 10px;
     }
-    button:hover { background: darkblue; }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .side-images { display: none; }
-      .main-wrapper { justify-content: center; }
+    @media(max-width:600px) {
+      .preview-images img {
+        width: 60px;
+        height: 60px;
+      }
+      .profile-circle {
+        width: 80px;
+        height: 80px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="title">Anianu.com</div>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <div class="menu">
-      <a href="#"><i class="fas fa-home"></i> Home</a>
-      <a href="#"><i class="fas fa-user"></i> Profile</a>
-      <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-    </div>
+  <!-- Card Preview -->
+  <div class="card" id="previewCard">
+    <h2 id="cardTitle">Your Company</h2>
+    <img id="cardProfile" src="https://via.placeholder.com/80" alt="Profile">
+    <p id="cardOverview">Overview will appear here...</p>
+    <div class="preview-images" id="cardImages"></div>
+    <button class="post-btn">Post</button>
+    <button class="discard-btn" onclick="discardCard()">Discard</button>
   </div>
 
-  <!-- Main Wrapper -->
-  <div class="main-wrapper">
-
-    <!-- Left Images -->
-    <div class="side-images">
-      <img src="https://cdn.pixabay.com/photo/2023/12/08/07/27/woman-8437007_1280.jpg" alt="img1">
-      <img src="https://picsum.photos/200?random=2" alt="img2">
-      <img src="https://picsum.photos/200?random=3" alt="img3">
-      <img src="https://picsum.photos/200?random=4" alt="img4">
-      <img src="https://picsum.photos/200?random=5" alt="img5">
-      <img src="https://picsum.photos/200?random=6" alt="img6">
-    </div>
-
-    <!-- Center Form -->
-    <div class="container">
-      <div class="ads-btn">ADS</div>
-
-      <div class="tabs">
-        <div id="loginTab" class="tab active" onclick="showForm('login')">Login</div>
-        <div id="registerTab" class="tab" onclick="showForm('register')">Register</div>
+  <!-- Form -->
+  <div class="form-container">
+    <div class="profile-upload">
+      <div class="profile-circle" id="profileCircle">
+        <span>+</span>
       </div>
-
-      <!-- Login Form -->
-      <form id="loginForm" class="active">
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <button type="submit">Login</button>
-      </form>
-
-      <!-- Register Form -->
-      <form id="registerForm">
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email" required>
-        <input type="password" placeholder="Password" required>
-        <select required>
-          <option value="" disabled selected>Position Applying For</option>
-          <option value="developer">Developer</option>
-          <option value="designer">Designer</option>
-          <option value="manager">Manager</option>
-        </select>
-        <button type="submit">Register</button>
-      </form>
+      <input type="file" id="profileInput" accept="image/*" style="display:none" onchange="loadProfile(event)">
+      <button class="upload-btn" onclick="document.getElementById('profileInput').click()">Upload Profile</button>
     </div>
 
-    <!-- Right Images -->
-    <div class="side-images">
-      <img src="https://picsum.photos/200?random=7" alt="img7">
-      <img src="https://picsum.photos/200?random=8" alt="img8">
-      <img src="https://picsum.photos/200?random=9" alt="img9">
-      <img src="https://picsum.photos/200?random=10" alt="img10">
-      <img src="https://picsum.photos/200?random=11" alt="img11">
-      <img src="https://picsum.photos/200?random=12" alt="img12">
-    </div>
+    <input type="text" id="username" placeholder="Username" oninput="updateCard()">
+    <textarea id="description" rows="3" placeholder="Description" oninput="updateCard()"></textarea>
+    <input type="text" id="whatsapp" placeholder="WhatsApp Number">
+    <input type="url" id="socialUrl" placeholder="Social Media URL (Optional)">
+
+    <label>Upload up to 5 images:</label>
+    <input type="file" id="images" accept="image/*" multiple onchange="previewImages(event)">
+
+    <button class="create-btn">Create Page</button>
   </div>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.querySelector('.menu');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-    }
-    function showForm(type) {
-      document.getElementById("loginForm").classList.remove("active");
-      document.getElementById("registerForm").classList.remove("active");
-      document.getElementById(type + "Form").classList.add("active");
+<script>
+  function updateCard() {
+    const title = document.getElementById("username").value;
+    const desc = document.getElementById("description").value;
 
-      document.getElementById("loginTab").classList.remove("active");
-      document.getElementById("registerTab").classList.remove("active");
-      document.getElementById(type + "Tab").classList.add("active");
-    }
-  </script>
+    document.getElementById("cardTitle").textContent = title || "Your Company";
+    document.getElementById("cardOverview").textContent = desc || "Overview will appear here...";
+  }
+
+  function loadProfile(event) {
+    const profile = document.getElementById("cardProfile");
+    const circle = document.getElementById("profileCircle");
+    profile.src = URL.createObjectURL(event.target.files[0]);
+    circle.innerHTML = `<img src="${URL.createObjectURL(event.target.files[0])}" alt="Profile">`;
+  }
+
+  function previewImages(event) {
+    const files = event.target.files;
+    const container = document.getElementById("cardImages");
+    container.innerHTML = "";
+
+    Array.from(files).slice(0, 5).forEach(file => {
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(file);
+      container.appendChild(img);
+    });
+  }
+
+  function discardCard() {
+    document.getElementById("username").value = "";
+    document.getElementById("description").value = "";
+    document.getElementById("whatsapp").value = "";
+    document.getElementById("socialUrl").value = "";
+    document.getElementById("cardTitle").textContent = "Your Company";
+    document.getElementById("cardOverview").textContent = "Overview will appear here...";
+    document.getElementById("cardProfile").src = "https://via.placeholder.com/80";
+    document.getElementById("cardImages").innerHTML = "";
+    document.getElementById("profileCircle").innerHTML = "<span>+</span>";
+  }
+</script>
+
 </body>
 </html>
+
