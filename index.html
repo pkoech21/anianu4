@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Login Form</title>
+  <!-- Font Awesome CDN for fingerprint icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -19,7 +21,7 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 300px;
+      width: 320px;
     }
 
     .login-container h2 {
@@ -27,19 +29,48 @@
       margin-bottom: 20px;
     }
 
-    .login-container input {
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input {
       width: 100%;
       padding: 10px;
-      margin: 10px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
     }
 
+    .form-group .forgot-link {
+      display: block;
+      text-align: right;
+      font-size: 12px;
+      color: rgb(250, 125, 8);
+      margin-top: 5px;
+      text-decoration: none;
+    }
+
+    .form-group .forgot-link:hover {
+      text-decoration: underline;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
     .login-container button {
-      width: 100%;
+      flex: 1;
       padding: 10px;
       border: none;
-      background: #007BFF;
+      background: #727474;
       color: white;
       font-size: 16px;
       border-radius: 5px;
@@ -47,7 +78,41 @@
     }
 
     .login-container button:hover {
-      background: #0056b3;
+      background: #434344;
+    }
+
+  .fingerprint-btn {
+  width: 45px;              /* fixed width */
+  height: 45px;             /* same height → makes it a circle */
+  background: rgb(250, 125, 8); /* orange background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;          /* fingerprint size */
+  color: white;             /* white fingerprint */
+  border-radius: 50%;       /* makes it a circle */
+  cursor: pointer;
+  border: none;             /* clean look */
+  margin-left: 10px;        /* spacing from login button */
+}
+
+.fingerprint-btn:hover {
+  background: rgb(200, 100, 5); /* darker orange on hover */
+}
+    .register-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .register-text a {
+      color: #007BFF;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .register-text a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -56,10 +121,27 @@
   <div class="login-container">
     <h2>Login</h2>
     <form action="#" method="POST">
-      <input type="text" name="username" placeholder="Enter Username" required>
-      <input type="password" name="password" placeholder="Enter Password" required>
-      <button type="submit">Login</button>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Enter Username" required>
+        <a href="#" class="forgot-link">Forgot Username?</a>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter Password" required>
+        <a href="#" class="forgot-link">Forgot Password?</a>
+      </div>
+
+      <div class="button-group">
+        <button type="submit">Login</button>
+        <button type="button" class="fingerprint-btn">
+          <i class="fas fa-fingerprint"></i>
+        </button>
+      </div>
     </form>
+
+    <p class="register-text">Are you new here? <a href="#">Register Now</a></p>
   </div>
 
 </body>
