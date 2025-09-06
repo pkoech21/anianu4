@@ -9,7 +9,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f3f3f3;
+      background: #f1eded; /* plain background */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,16 +17,33 @@
     }
 
     .login-container {
-      background: white;
-      padding: 30px;
+      position: relative;
+      width: 340px;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 320px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(8, 8, 8, 0.89);
+      background-size: cover;
+      background-position: center;
+      color: rgb(15, 10, 10);
     }
 
-    .login-container h2 {
+    /* top image (page image displayed inside form) */
+    .login-header {
+      width: 100%;
+      height: 120px;
+      background: url("https://play-lh.googleusercontent.com/0brqPU3PLaJ5dqILv0aQmHX5jogRdLWMN4JZv9rAFp-Di3BknQ6yckE42LlNNFAOYlQ=w240-h480-rw") no-repeat center center/cover;
+    }
+
+    .login-body {
+      padding: 25px;
+      position: relative;
+      background: rgba(233, 229, 229, 0.884); /* overlay for readability */
+    }
+
+    .login-body h2 {
       text-align: center;
       margin-bottom: 20px;
+      color: #0a0909;
     }
 
     .form-group {
@@ -66,7 +83,7 @@
       gap: 10px;
     }
 
-    .login-container button {
+    .login-body button {
       flex: 1;
       padding: 10px;
       border: none;
@@ -77,36 +94,38 @@
       cursor: pointer;
     }
 
-    .login-container button:hover {
+    .login-body button:hover {
       background: #434344;
     }
 
-  .fingerprint-btn {
-  width: 45px;              /* fixed width */
-  height: 45px;             /* same height → makes it a circle */
-  background: rgb(250, 125, 8); /* orange background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;          /* fingerprint size */
-  color: white;             /* white fingerprint */
-  border-radius: 50%;       /* makes it a circle */
-  cursor: pointer;
-  border: none;             /* clean look */
-  margin-left: 10px;        /* spacing from login button */
-}
+    .fingerprint-btn {
+      width: 45px;
+      height: 45px;
+      background: rgb(250, 125, 8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: white;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
 
-.fingerprint-btn:hover {
-  background: rgb(200, 100, 5); /* darker orange on hover */
-}
+    .fingerprint-btn:hover {
+      background: rgb(200, 100, 5);
+    }
     .register-text {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: black;
+
+    
     }
 
     .register-text a {
-      color: #007BFF;
+      color: #bd4e05;
       font-weight: bold;
       text-decoration: none;
     }
@@ -114,35 +133,54 @@
     .register-text a:hover {
       text-decoration: underline;
     }
+
+    /* upload input */
+    .upload-container {
+      text-align: center;
+      margin: 10px 0;
+    }
+    .upload-container input {
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="login-container">
-    <h2>Login</h2>
-    <form action="#" method="POST">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Enter Username" required>
-        <a href="#" class="forgot-link">Forgot Username?</a>
-      </div>
+  <div class="login-container" id="loginBox">
+    <!-- Page background image displayed at the top -->
+    <div class="login-header"></div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" placeholder="Enter Password" required>
-        <a href="#" class="forgot-link">Forgot Password?</a>
-      </div>
+    <!-- Login form body -->
+    <div class="login-body">
+      <h2>Login</h2>
+      <form action="#" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter Username" required>
+          <a href="#" class="forgot-link">Forgot Username?</a>
+        </div>
 
-      <div class="button-group">
-        <button type="submit">Login</button>
-        <button type="button" class="fingerprint-btn">
-          <i class="fas fa-fingerprint"></i>
-        </button>
-      </div>
-    </form>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter Password" required>
+          <a href="#" class="forgot-link">Forgot Password?</a>
+        </div>
 
-    <p class="register-text">Are you new here? <a href="#">Register Now</a></p>
+        <div class="button-group">
+          <button type="submit">Login</button>
+          <button type="button" class="fingerprint-btn">
+            <i class="fas fa-fingerprint"></i>
+          </button>
+        </div>
+      </form>
+
+      <p class="register-text">Are you new here? <a href="#">Register Now</a></p>
+
+    
+    </div>
   </div>
+
+ 
 
 </body>
 </html>
